@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class window{
 
     private JButton to_F;
@@ -13,17 +14,31 @@ public class window{
     public window() {
         to_F.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                double value = Double.parseDouble(textField1.getText());
-                //t.convertToF(value);
-                JOptionPane.showMessageDialog(null, t.convertToF(value)+" F");
+                try
+                {
+                    Double.parseDouble(textField1.getText());
+                    double value = Double.parseDouble(textField1.getText());
+                    JOptionPane.showMessageDialog(null, t.convertToF(value) + " F");
+                }
+                catch (NumberFormatException a)
+                {
+                    JOptionPane.showMessageDialog(null, "Enter a Number");
+                }
             }
         });
         to_C.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                double value = Double.parseDouble(textField1.getText());
-                t.convertToC(value);
-                JOptionPane.showMessageDialog(null, t.convertToC(value) + " C");
+                try{
+                    Double.parseDouble(textField1.getText());
+                    double value = Double.parseDouble(textField1.getText());
+                    t.convertToC(value);
+                    JOptionPane.showMessageDialog(null, t.convertToC(value) + " C");
+                }
+                catch (NumberFormatException a)
+                {
+                    JOptionPane.showMessageDialog(null, "Enter a Number");
+                }
+
             }
         });
     }
